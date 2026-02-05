@@ -163,7 +163,7 @@ Resume:
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
-
+from fastapi.middleware.cors import CORSMiddleware
 me = Me()
 
 # ===== FASTAPI APP =====
@@ -196,6 +196,7 @@ app = gr.mount_gradio_app(app, demo, path="/ui")
 # ===== RUN =====
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=7860)
+
 
 
 
