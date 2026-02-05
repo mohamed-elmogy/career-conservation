@@ -3,3 +3,6 @@ openai
 python-dotenv
 requests
 pypdf
+fastapi
+uvicorn
+pydantic
