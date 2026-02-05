@@ -185,11 +185,12 @@ demo = gr.ChatInterface(
     title="Mohamed Elmogy AI Assistant",
 )
 
-app = gr.mount_gradio_app(app, demo, path="/")
+app = gr.mount_gradio_app(app, demo, path="/ui")
 
 # ===== RUN =====
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=7860)
+
 
 
 
