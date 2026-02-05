@@ -160,14 +160,36 @@ Resume:
 
 # ================= RUN APP =================
 
+from fastapi import FastAPI
+from pydantic import BaseModel
+import uvicorn
+
 me = Me()
 
+# ===== FASTAPI APP =====
+app = FastAPI()
+
+class ChatRequest(BaseModel):
+    message: str
+    history: list = []
+
+@app.post("/chat")
+async def chat_endpoint(req: ChatRequest):
+    reply = me.chat(req.message, req.history)
+    return {"reply": reply}
+
+
+# ===== GRADIO UI =====
 demo = gr.ChatInterface(
     me.chat,
     title="Mohamed Elmogy AI Assistant",
 )
 
+app = gr.mount_gradio_app(app, demo, path="/")
+
+# ===== RUN =====
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
 
 
