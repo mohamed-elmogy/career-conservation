@@ -85,7 +85,16 @@ class Me:
                     self.linkedin += text
         except:
             pass
-
+        # Load LinkedIn
+        self.resume = ""
+        try:
+            reader = PdfReader("me/resume.pdf")
+            for page in reader.pages:
+                text = page.extract_text()
+                if text:
+                    self.resume += text
+        except:
+            pass
         # Load summary
         try:
             with open("me/summary.txt", "r", encoding="utf-8") as f:
@@ -121,6 +130,9 @@ Summary:
 
 LinkedIn:
 {self.linkedin}
+
+Resume:
+{self.resume}
 """
 
     def chat(self, message, history):
@@ -157,4 +169,5 @@ demo = gr.ChatInterface(
 
 if __name__ == "__main__":
     demo.launch(server_name="0.0.0.0", server_port=7860)
+
 
