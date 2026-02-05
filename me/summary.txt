@@ -1,0 +1,1 @@
+My name is Mohamed Elmogy I am a Machine Learning Engineer specializing in NLP and Computer Vision, with hands-on experience fine-tuning LLMs and transformer-based models using PyTorch and TensorFlow. Experienced in building end-to-end ML pipelines and deploying ML-powered web applications using Flask.
